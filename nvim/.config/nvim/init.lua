@@ -4,4 +4,5 @@ require("config.keymaps")
 
 vim.cmd[[colorscheme catppuccin]]
 
+require('lualine').setup()
 
