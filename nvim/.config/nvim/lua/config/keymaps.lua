@@ -57,4 +57,6 @@ vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = "Show diagn
 vim.keymap.set('n', '<leader>t', function() vim.cmd [[TestNearest]] end, { desc = "Run nearest test" });
 vim.keymap.set('n', '<leader>T', function() vim.cmd [[TestFile]] end, { desc = "Run nearest test" });
 
-
+-- Arrow custom keymaps
+vim.keymap.set("n", "H", require("arrow.persist").previous)
+vim.keymap.set("n", "L", require("arrow.persist").next)
