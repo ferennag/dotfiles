@@ -1,4 +1,4 @@
-(require 'package) ()
+(require 'package)
 
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
@@ -111,3 +111,60 @@
   :ensure t ; only need to install it, embark loads it after consult if found
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
+
+(use-package magit
+  :commands magit-status)
+
+(use-package corfu
+  ;; Optional customizations
+  :custom
+  (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
+  (corfu-auto t)                 ;; Enable auto completion
+  (corfu-auto-prefix 2)          ;; Minimum length of prefix for auto completion.
+  (corfu-popupinfo-mode t)       ;; Enable popup information
+  (corfu-popupinfo-delay 0.5)    ;; Lower popupinfo delay to 0.5 seconds from 2 seconds
+  (corfu-separator ?\s)          ;; Orderless field separator, Use M-SPC to enter separator
+  ;; (corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
+  ;; (corfu-quit-no-match nil)      ;; Never quit, even if there is no match
+  ;; (corfu-preview-current nil)    ;; Disable current candidate preview
+  ;; (corfu-preselect 'prompt)      ;; Preselect the prompt
+  ;; (corfu-on-exact-match nil)     ;; Configure handling of exact matches
+  ;; (corfu-scroll-margin 5)        ;; Use scroll margin
+  (completion-ignore-case t)
+  ;; Enable indentation+completion using the TAB key.
+  ;; `completion-at-point' is often bound to M-TAB.
+  (tab-always-indent 'complete)
+  (corfu-preview-current nil) ;; Don't insert completion without confirmation
+  ;; Recommended: Enable Corfu globally.  This is recommended since Dabbrev can
+  ;; be used globally (M-/).  See also the customization variable
+  ;; `global-corfu-modes' to exclude certain modes.
+  :init
+  (global-corfu-mode))
+
+(use-package nerd-icons)
+
+(use-package nerd-icons-corfu
+  :after corfu
+  :init (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
+
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
+
+(use-package which-key
+  :init
+  (which-key-mode 1)
+  :diminish
+  :custom
+  (which-key-side-window-location 'bottom)
+  (which-key-sort-order #'which-key-key-order-alpha) ;; Same as default, except single characters are sorted alphabetically
+  (which-key-sort-uppercase-first nil)
+  (which-key-add-column-padding 1) ;; Number of spaces to add to the left of each column
+  (which-key-min-display-lines 6)  ;; Increase the minimum lines to display, because the default is only 1
+  (which-key-idle-delay 0.8)       ;; Set the time delay (in seconds) for the which-key popup to appear
+  (which-key-max-description-length 25)
+  (which-key-allow-imprecise-window-fit nil)) ;; Fixes which-key window slipping out in Emacs Daemon
+
+;; Make gc pauses faster by decreasing the threshold.
+(setq gc-cons-threshold (* 2 1000 1000))
+;; Increase the amount of data which Emacs reads from the process
+(setq read-process-output-max (* 1024 1024)) ;; 1mb
