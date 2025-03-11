@@ -31,6 +31,9 @@
   (electric-pair-mode t)
   (set-frame-font "JetBrainsMono Nerd Font Mono 14" nil t))
 
+(setq auto-save-file-name-transforms
+  `((".*" "~/.emacs-saves/" t)))
+
 (use-package catppuccin-theme
   :config
   (load-theme 'catppuccin :no-confirm))
