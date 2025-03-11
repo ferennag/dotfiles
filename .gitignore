@@ -1,2 +1,7 @@
 # This one changes every time there is a vim plugin update. I don't want to commit the file each time
 lazy-lock.json
+
+# emacs stuff
+elpa
+eln-cache
+emacs/.emacs.d/history

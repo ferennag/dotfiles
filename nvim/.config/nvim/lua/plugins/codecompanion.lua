@@ -44,6 +44,9 @@ return {
                     },
                 })
             end
-        }
-    }
+          },
+          view = {
+              response_format = "markdown", -- Ensures responses are treated as markdown
+          }
+      }
 }
