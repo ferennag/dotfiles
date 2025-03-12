@@ -29,11 +29,9 @@
   (blink-cursor-mode -1)
   (global-display-line-numbers-mode t)
   (electric-pair-mode t)
-  (set-frame-font "JetBrainsMono Nerd Font Mono 14" nil t))
+  (set-frame-font "JetBrainsMono Nerd Font Mono 15" nil t))
 
-(use-package doom-themes
-  :config
-  (load-theme 'doom-dracula))
+(setq ring-bell-function nil)
 
 (use-package catppuccin-theme)
 
@@ -142,6 +140,10 @@
 
 (use-package nerd-icons)
 
+(use-package doom-themes
+  :config
+  (load-theme 'doom-tokyo-night))
+
 (use-package nerd-icons-corfu
   :after corfu
   :init (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
@@ -168,6 +170,13 @@
 ;; Increase the amount of data which Emacs reads from the process
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
 
+(setq evil-want-keybinding nil)
 (use-package evil
   :config
   (evil-mode 1))
+
+(use-package evil-collection
+  :init
+  (evil-collection-init))
+
+(use-package go-mode)
