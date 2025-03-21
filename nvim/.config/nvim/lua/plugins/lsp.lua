@@ -68,10 +68,11 @@ j   },
                     local client_id = vim.tbl_get(event, 'data', 'client_id')
                     local client = vim.lsp.get_client_by_id(client_id)
 
-                    if client.name == 'clangd' then
+                    if client.name == 'clangd' or client.name == 'cmake' then
                         vim.keymap.set('n', '<leader>,r', '<cmd>CMakeRun<cr>', opts)
                         vim.keymap.set('n', '<leader>,b', '<cmd>CMakeBuild<cr>', opts)
                         vim.keymap.set('n', '<leader>,c', '<cmd>CMakeClean<cr>', opts)
+                        vim.keymap.set('n', '<leader>,,', '<cmd>CMakeOpenRunner<cr>', opts)
                     end
 
                     vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
