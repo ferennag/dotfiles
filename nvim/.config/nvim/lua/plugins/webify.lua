@@ -2,7 +2,7 @@
 return {
     "pabloariasal/webify.nvim",
     keys = {
-        { '<leader>ro', '<cmd>OpenFileInRepo<cr>', desc = "Open File in repository" },
-        { '<leader>ry', '<cmd>YankFileUrl +<cr>', desc = "Yank File URL" },
+        { '<leader>go', '<cmd>OpenFileInRepo<cr>', desc = "Open File in repository" },
+        { '<leader>gy', '<cmd>YankFileUrl +<cr>', desc = "Yank File URL" },
     }
 }
