@@ -73,8 +73,9 @@ j   },
                         vim.keymap.set('n', '<leader>,b', '<cmd>CMakeBuild<cr>', opts)
                         vim.keymap.set('n', '<leader>,c', '<cmd>CMakeClean<cr>', opts)
                         vim.keymap.set('n', '<leader>,,', '<cmd>CMakeOpenRunner<cr>', opts)
+                        vim.keymap.set('n', '<leader>,.', '<cmd>CMakeOpenExecutor<cr>', opts)
                     end
-
+                    
                     vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
                     vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
                     vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
@@ -96,6 +97,11 @@ j   },
                     function(server_name)
                         require('lspconfig')[server_name].setup({})
                     end,
+                    ["clangd"] = function()
+                        require("lspconfig").clangd.setup({
+                            cmd = {"clangd", "--header-insertion=never"}
+                        })
+                    end
                 }
             })
         end
