@@ -11,6 +11,8 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = "Move to the top window" })
 
 -- Telescope
 local telescope = require('telescope.builtin')
+vim.keymap.set('n', '<leader>f.', telescope.resume, { desc = 'Telescope resume search' })
+vim.keymap.set('n', '<leader>f,', telescope.search_history, { desc = 'Telescope search history' })
 vim.keymap.set('n', '<leader>ff', telescope.find_files, { desc = 'Telescope find files' })
 vim.keymap.set('n', '<leader>fr', telescope.git_files, { desc = 'Telescope find git files' })
 vim.keymap.set('n', '<leader><leader>', telescope.find_files)
