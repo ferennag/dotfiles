@@ -6,12 +6,15 @@ return {
         "nvim-treesitter/nvim-treesitter",
     },
     keys = {
-        { "<leader>cc", "<cmd>CodeCompanionChat<cr>", desc = "Code Companion Chat" },
-        { "<leader>cd", "<cmd>CodeCompanion<cr>", desc = "Code Companion Command" },
+        { "<leader>cc", "<cmd>CodeCompanionChat Toggle<cr>",        desc = "Code Companion Chat" },
+        { "<leader>cd", "<cmd>CodeCompanion<cr>",            desc = "Code Companion Command" },
+        { "<leader>ca", "<cmd>CodeCompanionActions<cr>",     desc = "Code Companion Action Palette" },
     },
     opts = {
-        action_palette = {
-            provider = "telescope", -- Use telescope for the action palette
+        display = {
+            action_palette = {
+                provider = "telescope", -- Use telescope for the action palette
+            },
         },
         strategies = {
             chat = {
@@ -44,9 +47,9 @@ return {
                     },
                 })
             end
-          },
-          view = {
-              response_format = "markdown", -- Ensures responses are treated as markdown
-          }
-      }
+        },
+        view = {
+            response_format = "markdown", -- Ensures responses are treated as markdown
+        }
+    }
 }
